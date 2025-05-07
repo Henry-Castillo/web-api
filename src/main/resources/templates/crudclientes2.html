@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Getting Started: Serving Web Content</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-6 col-sm-4">
+				<h1>Mantenimiento de Clientes</h1>
+
+				<form th:action="@{/mantenimiento}" method="post" th:object="${cliente}">
+
+
+					<div class="form-group" style="display: none">
+						<label for="inputCod">Código</label>
+						<input type="text" th:field="*{id}" class="form-control" id="inputCod" placeholder="Código" />
+					</div>
+
+
+					<!-- Nombre del producto -->
+					<div class="form-group">
+						<label for="inputNom">Nombre</label>
+						<input type="text" th:field="*{nombre}" class="form-control" id="inputNom"
+							placeholder="Nombre" />
+					</div>
+
+					<!-- Stock del producto -->
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label for="inputStk">Correo</label>
+							<input type="text" th:field="*{correo}" class="form-control" id="inputStk"
+								placeholder="Correo" />
+						</div>
+
+						<!-- Precio del producto -->
+						<div class="form-group col-md-6">
+							<label for="inputPrec">DNI</label>
+							<input type="text" th:field="*{dni}" class="form-control" id="inputPrec"
+								placeholder="DNI" />
+						</div>
+					</div>
+
+					<!-- Categoría del producto 
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputCat">Categoría</label>
+                                <select id="inputCat" class="form-control">
+                                    <option value="-1">Seleccione...</option>
+                                    <option value="1">Electrónica</option>
+                                    <option value="2">Ropa</option>
+                                    <option value="3">Alimentos</option>
+                                </select>
+                            </div> -->
+
+					<!-- Estado del producto 
+                        <div class="form-group col-md-4">
+                            <label for="inputEst">Estado</label>
+                            <select id="inputEst" class="form-control">
+                                <option value="1">Activo</option>
+                                <option value="0">Eliminado</option>
+                            </select>
+                        </div>
+                        -->
+					<!-- Proveedor del producto 
+                        <div class="form-group col-md-4">
+                            <label for="inputProv">Proveedor</label>
+                            <select id="inputProv" class="form-control">
+                                <option value="-1">Seleccione...</option>
+                                <option value="1">Proveedor A</option>
+                                <option value="2">Proveedor B</option>
+                            </select>
+                        </div>
+                    </div>
+                        -->
+					<!-- Botón de envío -->
+					<button type="submit" class="btn btn-primary">Registrar</button>
+					<br>
+					<div th:text="${mensaje}"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-6 col-sm-7">
+		<h3></h3>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>DNI</th>
+					<th>Acciones</th>
+				</tr>
+				<tr th:each="cliente : ${clientes}">
+					<td th:text="${cliente.nombre}">Nombre</td>
+					<td th:text="${cliente.correo}">Correo</td>
+					<td th:text="${cliente.dni}">DNI</td>
+					<td>
+						<a th:href="@{/cargar(id=${cliente.id})}">Editar</a>
+						<a th:href="@{/eliminar(id=${cliente.id})}" onclick="return confirm('¿Eliminar?')">Eliminar</a>
+					</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+</body>
+
+</html>
