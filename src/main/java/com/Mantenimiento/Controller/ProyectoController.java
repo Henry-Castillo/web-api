@@ -31,11 +31,17 @@ public class ProyectoController {
 	}
 
 	@GetMapping("/mantenimiento")
-	public String usersPage(Model model) {
+	public String usersPage(Model model, @RequestParam(required = false) Long id) {
 		List<Cliente> clientes = Arrays.asList(rt.getForObject("http://localhost:8081/api/clientes", Cliente[].class));
 		model.addAttribute("clientes", clientes);
-		model.addAttribute("cliente", new Cliente());
-		return "crudclientes2";
+		if (id != null) {
+			Cliente cliente = rt.getForObject("http://localhost:8081/api/clientes/" + id, Cliente.class);
+			model.addAttribute("cliente", cliente);
+		} else {
+
+			model.addAttribute("cliente", new Cliente());
+		}
+		return "crudclientes";
 	}
 
 	@PostMapping("/mantenimiento")
@@ -44,6 +50,26 @@ public class ProyectoController {
 			rt.postForObject("http://localhost:8081/api/cargar", cliente, Cliente.class);
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "Error al guardar: " + e.getMessage());
+		}
+		return "redirect:/mantenimiento";
+	}
+
+	@PostMapping("/mantenimiento/actualizar")
+	public String actualizarCliente(@ModelAttribute Cliente cliente) {
+		try {
+			rt.put("http://localhost:8081/api/clientes", cliente);
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error al actualizar: " + e.getMessage());
+		}
+		return "redirect:/mantenimiento";
+	}
+
+	@GetMapping("/mantenimiento/eliminar")
+	public String eliminarCliente(@RequestParam Long id) {
+		try {
+			rt.delete("http://localhost:8081/api/clientes/" + id);
+		} catch (Exception e) {
+			System.out.println();
 		}
 		return "redirect:/mantenimiento";
 	}

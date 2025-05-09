@@ -1,0 +1,83 @@
+/* Estilo general del cuerpo */
+body {
+    background-color: #f8f9fa;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tarjetas */
+.card {
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Encabezados */
+.card-header {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+/* Formularios */
+input.form-control {
+    border-radius: 5px;
+}
+
+button.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Tabla de clientes */
+.table {
+    margin-bottom: 0;
+}
+
+.table thead {
+    background-color: #343a40;
+    color: white;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.table td,
+.table th {
+    vertical-align: middle;
+    text-align: center;
+}
+
+/* Botones de acción */
+.btn-outline-info,
+.btn-outline-danger {
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 0.9rem;
+}
+
+.btn-outline-info:hover {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Espaciado entre botones */
+.table .btn + .btn {
+    margin-left: 4px;
+}
+
+/* Mensajes de validación */
+.text-danger {
+    font-size: 0.85rem;
+    font-weight: 500;
+}

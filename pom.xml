@@ -12,6 +12,7 @@
 	<groupId>com.Martin</groupId>
 	<artifactId>MVC.Mantenimiento</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
 	<name>Mantenimiento Retail</name>
 	<description>Proyecto Mantenimiento MVC</description>
 	<url />
